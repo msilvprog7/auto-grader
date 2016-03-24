@@ -60,17 +60,17 @@
     {% if uploaded %}
     <div class="container">
       <h4>Grade</h4>
-      {{ if not compiled }}
+      {% if not compiled %}
       <div class="errors">
 	failed to compile walk.cc
       </div>
-      {{ endif }}
+      {% endif %}
       <div class="results">
 	Score: <b>{{ score }}</b> out of <b>2</b> correct.
 	<br /><br />
 	<center>*************Original submission*************</center>
 	<div class="submission">
-	  {{ text }}
+	  <pre>{{ text }}</pre>
 	</div>
       </div>
       <a href="/">Try again?</a>

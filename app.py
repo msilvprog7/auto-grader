@@ -27,7 +27,7 @@ def index():
     if request.method == 'POST' and not uploaded:
         # Push error
         errors.append("You forgot to upload the file!")
-    else if uploaded:
+    elif uploaded:
         # Save file
         codeFile.save(STORED_FILENAME)
         # Test code
