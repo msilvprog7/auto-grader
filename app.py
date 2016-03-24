@@ -37,6 +37,10 @@ def index():
         score = results["score"]
         has_file = results["has_file"]
         text = results["text"]
+        # In case no file now...
+        if not has_file:
+            errors.append("Unable to process the uploaded file.")
+            uploaded = False
     
     # Render page
     return render_template('index.html', uploaded=uploaded, errors=errors, \
