@@ -22,14 +22,62 @@
       form {
         padding: 2% 10%;
       }
+      div.input-fields > input {
+        display: block;
+        margin: 5%;
+      }
+      div.errors {
+        padding: 1% 5%;
+        background-color: #b43c3e;
+        color: #540000;
+      }
+      ul {
+        padding: 0% 5%;
+      }
+      li {
+        margin: 1%;
+      }
+      a {
+        font-size: 14px;
+        color: #7fd4c6;
+        text-align: center;
+        text-decoration: none;
+        display: block;
+      }
+      a:hover {
+        color: #8ed9c5;
+      }
     </style>
   </head>
   <body>
+    {% if uploaded %}
+    <div class="container">
+      <h4>Grade</h4>
+      <div class="results">
+      </div>
+      <a href="/">Try again?</a>
+    </div>
+    {% else %}
     <div class="container">
       <h4>Submit your homework!</h4>
-      <form>
+      <form action="" method="POST" enctype="multipart/form-data">
 	<h5>Attach <i>walk.cc</i> and view your grade.</h5>
+	{% if errors %}
+	<div class="errors">
+	  <h5>Errors: </h5>
+	  <ul>
+	    {% for error in errors %}
+	    <li>{{ error }}</li>
+	    {% endfor %}
+	  </ul>
+	</div>
+	{% endif %}
+	<div class="input-fields">
+	  <input type="file" id="codeFile" name="codeFile" accept=".cc" />
+	  <input type="submit" value="Upload!" />
+	</div>
       </form>
     </div>
+    {% endif %}
   </body>
 </html>
